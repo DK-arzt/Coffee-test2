@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Два пончика и чашка кофе</title>
+  <meta
+    name="description"
+    content="Современная адаптивная лендинг-страница специализированной кофейни «Два пончика и чашка кофе»."
+  />
+  <style>
+    :root {
+      --bg: #f8f1e7;
+      --bg-soft: #fff9f3;
+      --card: rgba(255, 255, 255, 0.9);
+      --cream: #f1deca;
+      --latte: #e4c4a2;
+      --brown: #4a2f24;
+      --brown-soft: #715142;
+      --brown-deep: #2b1913;
+      --accent: #a4623f;
+      --accent-dark: #7a4428;
+      --gold: #d6a96f;
+      --text: #35261f;
+      --text-soft: #715d53;
+      --white: #ffffff;
+      --line: rgba(74, 47, 36, 0.1);
+      --shadow: 0 20px 50px rgba(74, 47, 36, 0.12);
+      --shadow-strong: 0 26px 60px rgba(74, 47, 36, 0.18);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --transition: 0.35s ease;
+      --max-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.85), transparent 28%),
+        linear-gradient(180deg, #fcf7f1 0%, #f8f1e7 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      color: var(--brown);
+    }
+
+    .section-text {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 249, 243, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .logo-title {
+      font-size: 1.24rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--brown);
+    }
+
+    .logo-subtitle {
+      margin-top: 7px;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      position: relative;
+      font-weight: 600;
+      color: var(--brown-soft);
+      transition: color var(--transition);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      transition: width var(--transition);
+    }
+
+    .nav a:hover {
+      color: var(--accent-dark);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 72px 0 94px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      left: -120px;
+      top: -140px;
+      border-radius: 50%;
+      background: rgba(214, 169, 111, 0.18);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -90px;
+      bottom: -80px;
+      border-radius: 50%;
+      background: rgba(164, 98, 63, 0.12);
+      filter: blur(16px);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: rgba(164, 98, 63, 0.1);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.94rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      margin: 0 0 18px;
+      font-size: clamp(2.7rem, 5vw, 5.2rem);
+      line-height: 0.96;
+      color: var(--brown-deep);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text {
+      margin: 0 0 30px;
+      max-width: 620px;
+      font-size: 1.08rem;
+      color: var(--text-soft);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: var(--white);
+      box-shadow: 0 14px 28px rgba(122, 68, 40, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(122, 68, 40, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.88);
+      color: var(--brown);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(74, 47, 36, 0.08);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(74, 47, 36, 0.14);
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-point {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(74, 47, 36, 0.08);
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--brown-soft);
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      min-height: 600px;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      min-height: 600px;
+      height: 100%;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .hero-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+    }
+
+    .hero-photo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(125deg, rgba(255, 226, 165, 0.25) 0%, rgba(255,255,255,0.04) 30%, rgba(0,0,0,0.18) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.24);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-floating {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 3;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.84);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 30px rgba(43, 25, 19, 0.14);
+    }
+
+    .hero-floating strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--brown);
+      font-size: 1.1rem;
+    }
+
+    .hero-floating span {
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 30px;
+      margin-top: 46px;
+      align-items: stretch;
+    }
+
+    .about-left,
+    .about-right {
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .about-left {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fffaf4 0%, #f2dfca 100%);
+    }
+
+    .about-left::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      bottom: -70px;
+      border-radius: 50%;
+      background: rgba(164, 98, 63, 0.08);
+    }
+
+    .about-right {
+      background: rgba(255,255,255,0.82);
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-tag {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(74, 47, 36, 0.08);
+      color: var(--brown-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .about-left h3,
+    .about-right h3 {
+      margin: 0 0 14px;
+      font-size: 1.55rem;
+      line-height: 1.15;
+      color: var(--brown);
+    }
+
+    .about-left p,
+    .about-right p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    /* Menu */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .drink-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .drink-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .drink-photo {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      background: #eee;
+      transition: box-shadow 0.45s ease, transform 0.45s ease;
+    }
+
+    .drink-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      transition: transform 0.85s ease, filter 0.65s ease;
+      filter: brightness(0.98) contrast(1) saturate(1);
+    }
+
+    .drink-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(43, 25, 19, 0.04) 0%,
+        rgba(43, 25, 19, 0.18) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+      transition: background 0.45s ease;
+    }
+
+    .drink-card:hover .drink-photo {
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.28),
+        0 0 0 4px rgba(164, 98, 63, 0.12),
+        0 18px 36px rgba(74, 47, 36, 0.16);
+    }
+
+    .drink-card:hover .drink-photo::before {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.08) 0%,
+        rgba(43, 25, 19, 0.08) 45%,
+        rgba(43, 25, 19, 0.22) 100%
+      );
+    }
+
+    .drink-card:nth-child(1):hover .drink-photo img {
+      transform: scale(1.09) translateY(-4px);
+      filter: brightness(1.04) contrast(1.12) saturate(1.08);
+    }
+
+    .drink-card:nth-child(2):hover .drink-photo img {
+      transform: scale(1.12) translateX(6px);
+      filter: brightness(1.05) contrast(1.14) saturate(1.1);
+    }
+
+    .drink-card:nth-child(3):hover .drink-photo img {
+      transform: scale(1.1) translateY(3px) rotate(-0.6deg);
+      filter: brightness(1.03) contrast(1.13) saturate(1.07);
+    }
+
+    .drink-card:nth-child(4):hover .drink-photo img {
+      transform: scale(1.14) translateX(-4px) translateY(-2px);
+      filter: brightness(1.06) contrast(1.16) saturate(1.09);
+    }
+
+    .drink-info {
+      padding: 22px 22px 24px;
+    }
+
+    .drink-info h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+      line-height: 1.15;
+      color: var(--brown);
+    }
+
+    .drink-info p {
+      margin: 0 0 14px;
+      font-size: 0.97rem;
+      color: var(--text-soft);
+    }
+
+    .drink-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .drink-price {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(164, 98, 63, 0.1);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .drink-note {
+      font-size: 0.88rem;
+      color: var(--brown-soft);
+      font-weight: 600;
+    }
+
+    /* Contacts */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 28px;
+      margin-top: 46px;
+    }
+
+    .contact-card,
+    .hours-card {
+      background: rgba(255,255,255,0.92);
+      padding: 34px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3,
+    .hours-card h3 {
+      margin: 0 0 20px;
+      font-size: 1.45rem;
+      color: var(--brown);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-item {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 24px rgba(74, 47, 36, 0.08);
+    }
+
+    .contact-label {
+      display: block;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    .contact-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    .hours-table {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row span:first-child {
+      color: var(--text-soft);
+    }
+
+    .hours-row span:last-child {
+      color: var(--brown);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 28px 0 42px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Responsive */
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .about-grid,
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-photo-wrap,
+      .hero-photo-card {
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .section {
+        padding: 74px 0;
+      }
+
+      .header-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 16px;
+      }
+
+      .hero {
+        padding: 54px 0 74px;
+      }
+
+      .hero-title {
+        font-size: 2.7rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-photo-wrap,
+      .hero-photo-card {
+        min-height: 400px;
+      }
+
+      .hero-floating {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-left,
+      .about-right,
+      .contact-card,
+      .hours-card {
+        padding: 26px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 20px, var(--max-width));
+      }
+
+      .logo-title {
+        font-size: 1.05rem;
+      }
+
+      .logo-subtitle {
+        font-size: 0.76rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .drink-photo {
+        height: 245px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-title">Два пончика и чашка кофе</span>
+        <span class="logo-subtitle">специализированная кофейня</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#about">О компании</a>
+        <a href="#menu">Меню</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <div class="hero-badge">Летнее утро • голубое небо • уютная веранда</div>
+          <h1 class="hero-title">Кофе, пончики и городское лето в красивом ритме</h1>
+          <p class="hero-text">
+            «Два пончика и чашка кофе» — это кофейня с тёплой атмосферой, уличными столиками,
+            хорошим светом и напитками, к которым хочется возвращаться. Здесь приятно
+            начать утро, сделать паузу днём и встретиться вечером за чашкой любимого кофе.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">Посмотреть меню</a>
+            <a href="#contacts" class="btn btn-secondary">Найти кофейню</a>
+          </div>
+
+          <div class="hero-points">
+            <span class="hero-point">Уличные столики</span>
+            <span class="hero-point">Авторские напитки</span>
+            <span class="hero-point">Тёплая атмосфера</span>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap reveal">
+          <div class="hero-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80"
+              alt="Уличная кофейня с солнечными лучами, голубым небом и летними столиками"
+            />
+            <div class="hero-floating">
+              <strong>Летняя кофейня с настроением отпуска</strong>
+              <span>
+                Солнечные лучи, голубое небо, столики на улице и чашка хорошего кофе —
+                именно так выглядит место, в которое хочется возвращаться.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="center reveal">
+          <h2 class="section-title">О компании</h2>
+          <p class="section-text">
+            Мы создали кофейню как уютное городское место, где аромат свежего кофе,
+            мягкий свет, стильная подача и спокойная атмосфера соединяются в одно красивое впечатление.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-left reveal">
+            <div class="about-tag">Наша история</div>
+            <h3>Мы хотели сделать пространство, где вкус и настроение одинаково важны</h3>
+            <p>
+              «Два пончика и чашка кофе» родилась из простой идеи: соединить хороший кофе,
+              свежую выпечку, летнюю лёгкость и ощущение красивой городской паузы.
+              Чтобы к нам заходили не только за напитком, но и за атмосферой.
+            </p>
+          </div>
+
+          <div class="about-right reveal">
+            <h3>Почему нас выбирают</h3>
+            <p>
+              Мы делаем ставку на качественные напитки, продуманную подачу и визуально приятное пространство.
+              Здесь одинаково хорошо и быстро взять кофе с собой, и задержаться за столиком на улице.
+            </p>
+            <p>
+              В нашем меню есть и мягкие сливочные позиции, и классика для тех, кто любит чистый вкус кофе.
+              Даже маленькая чашка эспрессо у нас — это полноценный ритуал с правильной подачей и стаканом воды рядом.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="center reveal">
+          <h2 class="section-title">Предварительный просмотр меню</h2>
+          <p class="section-text">
+            Несколько напитков, с которых удобно начать знакомство с нашей кофейней.
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="drink-card reveal">
+            <div class="drink-photo">
+              <img
+                src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=80"
+                alt="Стильный капучино"
+              />
+            </div>
+            <div class="drink-info">
+              <h3>Капучино Крем Брюле</h3>
+              <p>
+                Нежный капучино с бархатистой пеной и мягкими карамельными нотами.
+                Идеален для красивого и спокойного утра.
+              </p>
+              <div class="drink-meta">
+                <span class="drink-price">от 290 ₽</span>
+                <span class="drink-note">мягкий сливочный вкус</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="drink-card reveal">
+            <div class="drink-photo">
+              <img
+                src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80"
+                alt="Стильный ванильный латте"
+              />
+            </div>
+            <div class="drink-info">
+              <h3>Латте Пончик Ваниль</h3>
+              <p>
+                Авторский латте с нежной ванильной сладостью и уютным десертным послевкусием,
+                вдохновлённым свежими пончиками.
+              </p>
+              <div class="drink-meta">
+                <span class="drink-price">от 320 ₽</span>
+                <span class="drink-note">десертный и уютный</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="drink-card reveal">
+            <div class="drink-photo">
+              <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80"
+                alt="Стильный кленовый раф"
+              />
+            </div>
+            <div class="drink-info">
+              <h3>Раф Кленовый</h3>
+              <p>
+                Мягкий сливочный раф с деликатной сладостью кленового сиропа.
+                Для тех, кто любит нежный и округлый кофейный вкус.
+              </p>
+              <div class="drink-meta">
+                <span class="drink-price">от 340 ₽</span>
+                <span class="drink-note">сливочный и деликатный</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="drink-card reveal">
+            <div class="drink-photo">
+              <img
+                src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=80"
+                alt="Маленькая чашка горячего эспрессо без молока со стаканом воды рядом"
+              />
+            </div>
+            <div class="drink-info">
+              <h3>Итальянский эспрессо</h3>
+              <p>
+                Горячий чёрный кофе без молока в маленькой чашке — классический эспрессо
+                с насыщенным ароматом и стаканом воды рядом, как в правильной подаче.
+              </p>
+              <div class="drink-meta">
+                <span class="drink-price">от 220 ₽</span>
+                <span class="drink-note">классика без молока</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="center reveal">
+          <h2 class="section-title">Контакты</h2>
+          <p class="section-text">
+            Заходите за любимым кофе, встречайтесь с друзьями или берите напитки с собой.
+          </p>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contact-card reveal">
+            <h3>Как нас найти</h3>
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="contact-label">Адрес</span>
+                <span class="contact-value">г. Москва, ул. Ароматная, 12</span>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">Телефон</span>
+                <a href="tel:+79991234567" class="contact-value">+7 (999) 123-45-67</a>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <a href="mailto:hello@2donutscoffee.ru" class="contact-value">hello@2donutscoffee.ru</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hours-card reveal">
+            <h3>Часы работы</h3>
+            <div class="hours-table">
+              <div class="hours-row">
+                <span>Понедельник — Пятница</span>
+                <span>08:00 – 21:00</span>
+              </div>
+              <div class="hours-row">
+                <span>Суббота</span>
+                <span>09:00 – 22:00</span>
+              </div>
+              <div class="hours-row">
+                <span>Воскресенье</span>
+                <span>09:00 – 20:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      © 2026 «Два пончика и чашка кофе». Тёплая кофейня для красивых и вкусных встреч.
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.18
+    });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
